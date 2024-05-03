@@ -46,9 +46,6 @@ RUN pip3 install \
 # Install toolchains
 RUN mkdir /opt/aarch64-toolchain && curl $AARCH64_TOOLCHAIN_LINK | tar xJ -C /opt/aarch64-toolchain --strip-components=1
 
-# Add generic non-root user
-RUN addgroup bao && adduser -disabled-password --ingroup bao bao
-
 # setup environment
 ENV PATH=$PATH:/opt/aarch64-toolchain/bin
 
