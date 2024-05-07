@@ -1,17 +1,18 @@
 # 1. Build Docker Image
 
-Inside `docker` directory run:
+Select your docker (check the [table](#3-available-dockers) of available dockers) and run:
 
 ```sh
-expot DOCKER_NAME=my_docker
-docker build -t $DOCKER_NAME .
+expot DOCKER=<docker_name>
+cd $DOCKER
+docker build -t $DOCKER .
 ```
 
 # 2. Run Docker
 
-Inside the folder desired folder, run:
+Inside the desired folder, run:
 ``` sh
-docker run --rm -it -u root -v "$(pwd):$(pwd)" -w "$(pwd)" $DOCKER_NAME
+docker run --rm -it -u root -v "$(pwd):$(pwd)" -w "$(pwd)" $DOCKER
 ```
 
 For instance, to build a linux image (on root directory):
@@ -20,7 +21,13 @@ For instance, to build a linux image (on root directory):
 git clone https://github.com/Diogo21Costa/evaluation-guests.git
 cd evaluation-guests
 
-docker run --rm -it -u root -v "$(pwd):$(pwd)" -w "$(pwd)" $DOCKER_NAME
+docker run --rm -it -u root -v "$(pwd):$(pwd)" -w "$(pwd)" $DOCKER
 bash build_linux.sh
 ```
 
+#  3. Available Dockers
+
+
+| Docker                 | Description                                                        | shell |
+| ---------------------- | ------------------------------------------------------------------ | :---: |
+| [bao](/bao/Dockerfile) | Include support to develop & deploy solutions using bao hypervisor |  zsh  |
