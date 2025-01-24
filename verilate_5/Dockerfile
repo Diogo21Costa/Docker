@@ -38,6 +38,7 @@ RUN apt-get install -y help2man perl python3 make autoconf g++ flex bison ccache
 
 RUN mkdir setup
 WORKDIR /setup
+COPY riscv32-embecosm-ubuntu2204-gcc13.2.0.tar.gz .
 
 # Install CMAKE
 RUN apt update && \
@@ -56,6 +57,8 @@ COPY verif ./verif
 COPY ci ./ci
 
 RUN ./ci/setup.sh
+
+COPY env_var_setup.sh .
 
 # default startup command
 CMD /bin/bash
